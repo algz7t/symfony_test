@@ -16,10 +16,16 @@ class RecipeServices
         $this->client = $container->get('eight_points_guzzle.client.api_recipes_puppy');
     }
 
-    public function searchRecipesBySearchQuery($query)
+    public function searchRecipesBySearchQuery($query, $page = null)
     {
+        $queryParams = ['q' => $query];
+
+        if($page) {
+            $queryParams['p'] = (int)$page;
+        }
+
         $response = $this->client->request('GET', '', [
-            'query' => ['q' => $query]
+            'query' => $queryParams
         ]);
 
         if(self::RESPONSE_OK === $response->getStatusCode()) {

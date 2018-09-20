@@ -37,13 +37,14 @@ class SearchController extends Controller
     public function getSearchAction(Request $request)
     {
         $searchQueryString = $request->get('q');
+        $page = $request->get('p');
 
         $regexMatchAll = preg_match_all(self::SAFE_STRING_REGEX, $searchQueryString);
         if(empty($searchQueryString) || !$regexMatchAll) {
             throw new BadRequestHttpException("Missing q query parameter");
         }
 
-        $results = $this->recipeServices->searchRecipesBySearchQuery($searchQueryString);
+        $results = $this->recipeServices->searchRecipesBySearchQuery($searchQueryString, $page);
 
         return  new JsonResponse($results);
     }
