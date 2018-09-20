@@ -5,11 +5,14 @@
     "require": {
         "php": "^7.0.8",
         "eightpoints/guzzle-bundle": "^7.3",
+        "friendsofsymfony/rest-bundle": "^2.4",
+        "jms/serializer-bundle": "^3.0@beta",
         "sensio/framework-extra-bundle": "^5.2",
         "symfony/console": "^4.0",
         "symfony/flex": "^1.0",
         "symfony/framework-bundle": "^4.0",
         "symfony/lts": "^4@dev",
+        "symfony/validator": "^4.0",
         "symfony/yaml": "^4.0"
     },
     "require-dev": {
