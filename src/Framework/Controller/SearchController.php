@@ -15,9 +15,6 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 
-/**
- * @Route("/api")
- */
 class SearchController extends Controller
 {
     const SAFE_STRING_REGEX = '/^[A-Za-z0-9._~(),;+?\-\s]+$/im';
@@ -32,6 +29,7 @@ class SearchController extends Controller
     /**
      * @Route("/search", name="search")
      * @QueryParam(name="q", default="0", nullable=true, allowBlank=true,  requirements="\w+", strict=true, description="search string")
+     * @QueryParam(name="p", default="0", nullable=true, allowBlank=true,  requirements="\d+", strict=true, description="page")
      * @return JsonResponse
      */
     public function getSearchAction(Request $request)
